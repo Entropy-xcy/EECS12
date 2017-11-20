@@ -165,3 +165,138 @@ type(x)
 ```
 20. String formatting
 (see slide for details...)
+21. Functions
+```
+def functioname(param1, param2....):
+    functions
+    return ret1, ret2...
+    # when return the function exits
+```
+22. The function does not have access to the variable that holds the actual parameter. Python pass the parameters by value.
+23. If the value of the variable is a mutable object(like a list or graphic), then changes to the state of the object will be visible to the calling program.
+## Graphics
+1. create window
+```
+>>> from graphics import *
+>>> win = GraphWin()
+>>> win.close()
+# The default GraphWin is 200 pixels tall by 200 pixels wide and origin(0, 0) is in the upper left corner, and the lower right corner is (199, 199)
+```
+
+2. sample
+```
+def main():
+    # create a window named My Circle with width 100 and height 100.
+    win = GraphWin("My Circle", 100, 100)
+
+    # create a circle object and draw it on the window
+    c = Circle(Point(50, 50), 10)
+    c.draw(win)
+
+    # when the mouse is clicked, close the window
+    win.getMouse()
+    win.close()
+
+main()
+```
+
+3. types of graphic operations
+ * creating graphics objects by their class names
+ * displaying objects
+ * changing objects: position, color
+ * getting user clicks
+ * getting user typing entry
+ * defining custon coordinates
+
+4. Graphical Objects
+ * GraphWin
+ * Point
+ * Circle
+ * Oval
+ * Line
+ * Text
+ * Rectangle
+
+5. creating graphical objects
+```
+varObj = Class(initial values)
+```
+
+6. using graphical objects
+```
+# <object>.<method-name>(<param1>, <param2>, ...)
+>>> p = Point(50, 60)
+>>> p.getX()
+50
+```
+
+7. set color
+```
+# set the fill color of a object
+<obj>.setFill('<color>')
+
+# set the outline color of a object
+<obj>.setOutline('<color>')
+
+# set to the custom color
+<obj>.setFill(color_rgb(255, 0, 0))
+```
+8. Set coordinate
+```
+# @params: four parameters that composed two coordinates of the lower-left and upper-right corners.
+```
+
+9. Move
+```
+# move the object dx unit in the x direction and dy in the y direction
+<obj>.move(dx, dy)
+```
+
+10. Get mouse clicks
+```
+from graphics import *
+win = GraphWin('Click me!')
+p = win.getMouse()
+
+# p is the Point that you clicked
+print("You clicked at:", p.getX(), p.getY())
+```
+
+11. delay
+```
+from time import *
+
+# sleep for 0.1 second
+sleep(0.1)
+```
+
+12 Moving object sample code
+```
+win = GraphWin(“Circle Window”, 400, 400)
+x = win.getMouse()
+x.draw(win)
+c = Circle(x, 100)
+c.draw(win)
+for in in range(10):
+    c.move(100/10,100/10)
+    sleep(0.1)
+p = win.getMouse()
+win.close()
+```
+
+12. Handling Textual input
+```
+input = Entry(Point(2, 3), 5)
+input.setText("0.0")
+input.draw(win)
+str = input.getText()
+```
+
+13. Showing pictures
+Note: only gif and ppm could be displayed
+```
+win = GraphWin("Bugs", 800, 800)
+initPoint = Point(50, 50)
+bug = Image(initPoint, "bug.gif")
+bug.draw(win)
+```
