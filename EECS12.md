@@ -56,32 +56,32 @@ for i in [a, b, c, d]:
 12. Range function
  * return a list
  * range(start, n, step)
- 1. Find the value of 'start'
- 2. Find the value of 'step'
- 3. if step>0 op='<', else op='>'
- 4. Check if "start op n" is true, output start, else loop
- 5. Go to step 3
-13. Stop a loop
+    1. Find the value of 'start'
+    2. Find the value of 'step'
+    3. if step>0 op='<', else op='>'
+    4. Check if "start op n" is true, output start, else loop
+    5. Go to step 3
+      6. Stop a loop
 ```
 break(go to the outer layer)
 ```
 14. List interfaces
  * List.append(x)
- <br>
- append the element x to the list
+    <br>
+     append the element x to the list
  * \*
- <br>
- zeros = [0] * 50
- repeat 50 times
+    <br>
+     zeros = [0] * 50
+     repeat 50 times
  * len(list)
- <br>
- return the length of the list
+    <br>
+     return the length of the list
  * slice the list
- <br>
- lst = [1, 2, 3, 4]
- lst[1:3] = [2, 3]
+    <br>
+     lst = [1, 2, 3, 4]
+     lst[1:3] = [2, 3]
  * in
- <br>
+    <br>
  ```
  x in list
  ```
@@ -92,45 +92,45 @@ break(go to the outer layer)
  ```
 15. String interfaces
  * \+
- <br>
- connect two string
+    <br>
+     connect two string
  * \*
- <br>
- repeat the string
+    <br>
+     repeat the string
  * string[index]
- <br>
- indexing
+    <br>
+     indexing
  * string[begin:end]
- <br>
- slicing
+    <br>
+     slicing
  * len()
- <br>
- length
+    <br>
+     length
  * split
  ```
  >>>'32,24,25,57'.split(',')
  ['32','24','25','57']
  ```
  * \n
- <br>
- Enter: next line
+    <br>
+     Enter: next line
  * string.find(s)
- <br>
- return the index when s first occurs
+    <br>
+     return the index when s first occurs
  * string.count(s)
- <br>
- return the number of the occurence of s
+    <br>
+     return the number of the occurence of s
  * string.replace(old, new)
- <br>
- return a string that the old string was replaced by the new string
- <br>
- Attention: you have to use "s = s.replace(old, new)" in order to change s
+    <br>
+     return a string that the old string was replaced by the new string
+     <br>
+     Attention: you have to use "s = s.replace(old, new)" in order to change s
 16. Two dimensional list
 ```
 >>>a = [[1, 2], [3, 4]]
 >>>a[1][1]
 4
-```  
+```
 17. File processing
 ```
 file = open('filename')
@@ -164,7 +164,7 @@ chr(num)
 type(x)
 ```
 20. String formatting
-(see slide for details...)
+   (see slide for details...)
 21. Functions
 ```
 def functioname(param1, param2....):
@@ -293,10 +293,75 @@ str = input.getText()
 ```
 
 13. Showing pictures
-Note: only gif and ppm could be displayed
+   Note: only gif and ppm could be displayed
 ```
 win = GraphWin("Bugs", 800, 800)
 initPoint = Point(50, 50)
 bug = Image(initPoint, "bug.gif")
 bug.draw(win)
 ```
+
+## Class & Objects
+
+1. Example of Constructor
+
+```
+circ = Circle(Point(0,0), 20)
+# circ is a instance
+```
+
+2. Example of instance's method
+```
+circ.draw(win)
+```
+3. Class Definition
+```
+class <class-name>:
+	<method-definitions>
+```
+4. Class Definition example
+```
+class Student:
+	# __init__ is the constructor
+	def __init__(self, name. hours, qpoints):
+		self.name = name
+		self.hours = float(hours)
+		self.qpoints = float(qpoints)
+	
+	# The self parameter is required for a method calling self.<var>
+	def getName(self):
+		return self.name
+	
+	def getHours(self):
+		return self.hours
+	
+	def getQPoints(self):
+		return self.qpoints
+		
+	def gpa(self):
+		return self.qpoints/self.hours
+	
+	# a static function which not calling self.<var> does not require self as a parameter of the method
+	def makeStudent(infoStr):
+		name, hours, qpoints = infoStr.split()
+		return Student(name, hours, qpoints)
+```
+5. Examples using class
+```
+>>> stu = Student("abc", 1, 1)
+>>> print(stu.getName())
+abc
+>>> print(stu.gpa())
+1
+>>> stu2 = makeStudent("bcd 1 1")
+>>> print(stu2.getHours())
+1
+```
+## Searching Algorithms
+### Linear Search
+1. Better performance for small data
+2. Python use Linear search as its built-in searching method
+### Binary Search
+1. REQUIRE THE DATASET TO BE SORTED
+2. Better performance for large data
+3. If the data is unsorted, it must be sorted first
